@@ -1,0 +1,44 @@
+Topic:1)
+ArrayBuffer is the core object, a reference to the fixed-length contiguous memory area.
+
+To do almost any operation on ArrayBuffer, we need a view.
+
+It can be a TypedArray:
+
+Uint8Array, Uint16Array, Uint32Array – for unsigned integers of 8, 16, and 32 bits.
+Uint8ClampedArray – for 8-bit integers, “clamps” them on assignment.
+Int8Array, Int16Array, Int32Array – for signed integer numbers (can be negative).
+Float32Array, Float64Array – for signed floating-point numbers of 32 and 64 bits.
+
+Or a DataView: the view that uses methods to specify a format, e.g. getUint8(offset).
+
+Topic:2)
+How to convert strings to binary or binary to strings?
+
+The TextDecoder and TextEncoder interfaces in JavaScript are used for converting between strings and binary data. These are particularly useful when dealing with text-based data in different encodings, such as UTF-8.
+
+
+Topic:3)
+Why we need Blob?
+
+While ArrayBuffer, Uint8Array and other BufferSource are “binary data”, a Blob represents “binary data with type”.
+
+That makes Blobs convenient for upload/download operations, that are so common in the browser.
+
+Methods that perform web-requests, such as XMLHttpRequest, fetch and so on, can work with Blob natively, as well as with other binary types.
+
+We can easily convert between Blob and low-level binary data types:
+
+We can make a Blob from a typed array using new Blob(...) constructor.
+We can get back ArrayBuffer from a Blob using blob.arrayBuffer(), and then create a view over it for low-level binary processing.
+Conversion streams are very useful when we need to handle large blob. You can easily create a ReadableStream from a blob. The Blob interface’s stream() method returns a ReadableStream which upon reading returns the data contained within the blob.
+
+
+Creating a Blob: Blobs can be created from strings, ArrayBuffers, and other blobs.
+Converting Blob: Blobs can be converted to text, ArrayBuffer, and other formats using FileReader.
+Downloading a Blob: You can download blobs as files by creating object URLs.
+Uploading a Blob: Blobs can be uploaded using FormData with XMLHttpRequest or the Fetch API.
+Advanced Usage: Blobs can be created from canvas elements for image processing.
+Blobs are a powerful tool in JavaScript for handling binary data efficiently, providing a bridge between raw data and higher-level abstractions like files and network data.
+
+
