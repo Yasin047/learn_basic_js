@@ -42,3 +42,423 @@ Advanced Usage: Blobs can be created from canvas elements for image processing.
 Blobs are a powerful tool in JavaScript for handling binary data efficiently, providing a bridge between raw data and higher-level abstractions like files and network data.
 
 
+
+Map
+
+0-new Map()
+1-set
+2-get
+3-has
+4-delete
+5-clear
+6-size
+
+Set
+
+0-new Set()
+1-add
+2-has
+3-delete
+4-clear
+5-size
+
+Iteration of the Map and the Set
+
+1-keys
+2-values
+3-entries ...for of loop and forEach
+
+Object to Map
+new Map(Object.entries(object))
+
+Map to Object
+
+Object.fromEntries(Map)
+
+
+WeakMap
+
+0-new WeakMap()
+1-set
+2-get
+3-has
+4-delete
+
+WeakSet
+
+0-new WeakSet()
+1-add
+2-has
+3-delete
+
+
+How many ways to create an Object
+
+1-Object Literals
+    const person1 = {
+        name: 'John',
+        age: 30,
+        greet: function() {
+            console.log(`Hello, my name is ${this.name}`);
+        }
+    };
+person1.greet();
+
+2-Constructor Functions: ‘new’ keyword:
+    a)Using the ‘new’ keyword with’ in-built Object constructor function
+        const person = new Object()
+    b)Using ‘new’ with user defined constructor function
+        function Person(fname, lname) {
+            this.firstName = fname;
+            this.lastName = lname;
+        }  
+//Object Literals and in-built object constructor are not using for a blue print of an Object        
+
+3-ES6 Classes
+    class Person {
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        greet() {
+            console.log(`Hello, my name is ${this.name}`);
+        }
+    }
+const person3 = new Person('Mike', 28);
+person3.greet();
+
+4-Factory Functions
+    function createPerson(name, age) {
+        return {
+            name: name,
+            age: age,
+            greet: function() {
+            console.log(`Hello, my name is ${this.name}`);
+            }
+        };
+    }
+const person4 = createPerson('Anna', 22);
+person4.greet();
+
+//Factory Functions provide a functional approach and can be more flexible than constructor functions.
+
+5-Object.create()
+
+    const personPrototype = {
+        greet: function() {
+            console.log(`Hello, my name is ${this.name}`);
+        }
+    };
+
+const person5 = Object.create(personPrototype);
+person5.name = 'Tom';
+person5.age = 35;
+
+person5.greet(); // Hello, my name is Tom
+
+
+    const personPrototype = {
+        greet: function() {
+             console.log(`Hello, my name is ${this.name}`);
+        }
+    };
+
+    function createPerson(name, age) {
+        const newPerson = Object.create(personPrototype);
+        newPerson.name = name;
+        newPerson.age = age;
+        return newPerson;
+    }
+
+const person1 = createPerson('John', 30);
+const person2 = createPerson('Jane', 25);
+
+person1.greet(); // Hello, my name is John
+person2.greet(); // Hello, my name is Jane
+
+
+//Using Object.create to create objects that inherit from a prototype.
+
+6-Object.assign() 
+    const orgObject = { company: 'ABC Corp' }
+    const carObject = { carName: 'Ford' }
+    const employee = Object.assign({}, orgObject, carObject);
+
+console.log(employee); // { carName: "Ford", company: "ABC Corp" }    
+
+//The Object.assign() method is used to copy the values of all enumerable own properties from one or more source objects to a target object. Here are some common use cases
+    1-Merging Objects
+    2-Cloning an Object
+    3-Adding Properties to an Object
+    4- Creating Mixin
+    5-Setting Default Values
+
+// Merging Objects
+const defaults = { theme: 'dark', showSidebar: true };
+const userPrefs = { showSidebar: false, fontSize: '16px' };
+const config = Object.assign({}, defaults, userPrefs);
+console.log(config); // { theme: 'dark', showSidebar: false, fontSize: '16px' }
+
+// Cloning an Object
+const original = { a: 1, b: 2 };
+const copy = Object.assign({}, original);
+console.log(copy); // { a: 1, b: 2 }
+
+// Adding Properties
+const user = { name: 'Alice' };
+Object.assign(user, { age: 25, location: 'Wonderland' });
+console.log(user); // { name: 'Alice', age: 25, location: 'Wonderland' }
+
+// Creating Mixins
+const speaker = {
+  speak: function() {
+    console.log(`${this.name} is speaking.`);
+  }
+};
+
+const mover = {
+  move: function() {
+    console.log(`${this.name} is moving.`);
+  }
+};
+
+const character = { name: 'Tom' };
+Object.assign(character, speaker, mover);
+character.speak(); // Tom is speaking.
+character.move(); // Tom is moving.
+
+
+
+
+
+
+Certainly! Here is a comprehensive A to Z learning guideline for understanding Objects and Object-Oriented Programming (OOP) in JavaScript:
+
+### A. Basics of Objects
+- **Introduction to Objects**: Understand that objects are collections of key-value pairs.
+- **Object Literals**: Learn to create objects using literals.
+- **Accessing Properties**: Dot notation vs. bracket notation.
+
+### B. Methods and `this`
+- **Defining Methods**: How to define and invoke methods.
+- **The `this` Keyword**: Understanding the context of `this` inside methods.
+
+### C. Constructor Functions
+- **Constructor Functions**: Creating objects using constructor functions.
+- **The `new` Keyword**: How and why to use the `new` keyword with constructors.
+
+### D. Prototypes and Inheritance
+- **Prototype Chain**: Understanding the prototype chain.
+- **Prototypal Inheritance**: How objects inherit properties and methods.
+- **`Object.create()`**: Creating objects with a specific prototype.
+
+### E. ES6 Classes
+- **Class Syntax**: Introduction to ES6 class syntax.
+- **Class Inheritance**: Using `extends` and `super` for class inheritance.
+- **Static Methods**: Defining static methods in classes.
+
+### F. Encapsulation
+- **Private and Public Members**: Concept of encapsulation in OOP.
+- **Closures for Privacy**: Using closures to create private variables and methods.
+
+### G. Mixins and Composition
+- **Mixins**: Combining behaviors from multiple sources.
+- **Composition**: Building objects using composition over inheritance.
+
+### H. Advanced Prototypes
+- **Prototype Methods**: Adding methods to prototypes.
+- **`__proto__` vs. `prototype`**: Differences and use cases.
+
+### I. Property Descriptors and Symbols
+- **Property Descriptors**: `configurable`, `enumerable`, `writable`, `value`.
+- **Symbols**: Creating unique keys for object properties.
+
+### J. Object Methods
+- **`Object.assign()`**: Copying properties from one object to another.
+- **`Object.keys()`, `Object.values()`, `Object.entries()`**: Iterating over object properties.
+- **`Object.freeze()`, `Object.seal()`, `Object.preventExtensions()`**: Controlling mutability.
+
+### K. Getters and Setters
+- **Getters and Setters**: Creating accessor properties using `get` and `set`.
+
+### L. Destructuring and Spread Syntax
+- **Destructuring**: Extracting properties from objects.
+- **Spread Syntax**: Spreading properties in new objects.
+
+### M. OOP Design Principles
+- **SOLID Principles**: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion.
+- **DRY, KISS, YAGNI**: Don’t Repeat Yourself, Keep It Simple Stupid, You Aren't Gonna Need It.
+
+### N. Design Patterns
+- **Singleton**: Restricting instantiation of a class to a single object.
+- **Factory Pattern**: Creating objects without specifying the exact class.
+- **Observer Pattern**: One-to-many dependency between objects.
+
+### O. Error Handling
+- **Try-Catch-Finally**: Handling errors in methods.
+- **Custom Errors**: Creating custom error classes.
+
+### P. Asynchronous Programming
+- **Callbacks**: Passing functions as parameters.
+- **Promises**: Handling asynchronous operations with promises.
+- **Async/Await**: Syntactic sugar over promises.
+
+### Q. Modules and Imports
+- **ES6 Modules**: Using `import` and `export` for modular code.
+- **CommonJS Modules**: Using `require` and `module.exports`.
+
+### R. Testing and Debugging
+- **Unit Testing**: Writing tests for classes and methods.
+- **Debugging**: Using browser developer tools to debug objects and methods.
+
+### S. Real-World Applications
+- **MVC Architecture**: Model-View-Controller pattern.
+- **RESTful Services**: Designing objects to interact with APIs.
+- **State Management**: Using objects to manage application state.
+
+### T. Performance Optimization
+- **Memory Management**: Understanding garbage collection and memory leaks.
+- **Efficient Object Usage**: Techniques to improve object performance.
+
+### U. Reflection and Metaprogramming
+- **Reflect API**: Interacting with object properties and methods dynamically.
+- **Proxy API**: Intercepting and customizing operations on objects.
+
+### V. Security Considerations
+- **Immutability**: Ensuring objects cannot be modified.
+- **Sanitizing Inputs**: Preventing code injection in methods.
+
+### W. Advanced ES6+ Features
+- **Generators**: Implementing iterable objects.
+- **Proxy and Reflect**: Advanced object manipulation.
+
+### X. Tools and Libraries
+- **Lodash**: Utility library for object manipulation.
+- **Immutable.js**: Library for immutable data structures.
+
+### Y. Best Practices
+- **Code Readability**: Writing clear and maintainable code.
+- **Documentation**: Documenting objects and methods.
+
+### Z. Continuous Learning
+- **Books and Resources**: "You Don’t Know JS" series, "Eloquent JavaScript".
+- **Online Courses**: Platforms like Udemy, Coursera, and freeCodeCamp.
+- **Practice**: Regular coding practice and contributing to open-source projects.
+
+### Example: Putting It All Together
+
+Here’s a comprehensive example that demonstrates many of the above concepts:
+
+```javascript
+// Class Definition with Constructor and Methods
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+// Extending the Person Class
+class Student extends Person {
+  constructor(name, age, major) {
+    super(name, age);
+    this.major = major;
+  }
+
+  study() {
+    console.log(`${this.name} is studying ${this.major}`);
+  }
+}
+
+// Creating Instances
+const person1 = new Person('John', 30);
+const student1 = new Student('Jane', 25, 'Computer Science');
+
+// Using Methods
+person1.greet(); // Hello, my name is John
+student1.greet(); // Hello, my name is Jane
+student1.study(); // Jane is studying Computer Science
+
+// Object.assign for Merging Objects
+const canCode = {
+  code() {
+    console.log(`${this.name} is coding`);
+  }
+};
+
+Object.assign(student1, canCode);
+student1.code(); // Jane is coding
+
+// Using Promises and Async/Await
+const fetchStudentData = async () => {
+  try {
+    const data = await fetch('https://api.example.com/student');
+    const student = await data.json();
+    console.log(student);
+  } catch (error) {
+    console.error('Error fetching student data:', error);
+  }
+};
+
+fetchStudentData();
+
+// Implementing a Singleton
+const Singleton = (() => {
+  let instance;
+
+  function createInstance() {
+    const object = new Object('I am the instance');
+    return object;
+  }
+
+  return {
+    getInstance: function() {
+      if (!instance) {
+        instance = createInstance();
+      }
+      return instance;
+    }
+  };
+})();
+
+const instance1 = Singleton.getInstance();
+const instance2 = Singleton.getInstance();
+
+console.log(instance1 === instance2); // true
+```
+
+Here's a comprehensive list of design patterns, categorized into three main types: Creational, Structural, and Behavioral. This list covers the most commonly referenced patterns in software design:
+
+Creational Patterns
+    1-Abstract Factory
+    2-Builder
+    3-Factory Method
+    4-Prototype
+    5-Singleton
+Structural Patterns
+    6-Adapter (or Wrapper)
+    7-Bridge
+    8-Composite
+    9-Decorator
+    10-Facade
+    11-Flyweight
+    12-Proxy
+Behavioral Patterns
+    13-Chain of Responsibility
+    14-Command
+    15-Interpreter
+    16-Iterator
+    17-Mediator
+    18-Memento
+    19-Observer
+    20-State
+    21-Strategy
+    22-Template Method
+    23-Visitor
+
+There are at least 26 design patterns discovered to date, but 23 of them are currently the standard in software engineering.    

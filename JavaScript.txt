@@ -1,0 +1,40 @@
+****JavaScript****
+
+1-Variables
+    a-let,var,const
+    b-Scope(global scope, block scope and function scope)
+    c-Hoisting
+2-Data Type
+    a-Primitive(String,Number,Bigint,Null,Boolean,Undefiend,Symbol)
+    b-Referernce(Object,Array,Date,Math,Map,Set,WeakMap,WeakSet)
+    c-Primitive vs Reference
+3-Expression and Operator
+    a-Arithmetic b-Assignment c-Comparison d-Logical e-String
+    f-Type g-Ternary h-Bitwise
+4-Control Flow and Error Handling
+    a-Loop(for,for..in,for..of,while,do..while,break,continue)
+    b-if,else if,else
+    c-try..catch
+    d-Custom Error
+5-Function
+6-Object and Class
+7-Asynchronous JavaScript
+    a-Callback
+    b-Promises
+    c-Async..Await
+    d-setTimeOut,setInterval
+8-Execution Context and Event loop
+
+
+
+****Class****
+
+1-class
+2-constractor
+3-super
+4-properties and methods and how to access it
+5-static properties and static methods and how to access it
+6-private properties and private methods and how to access it
+7-inheritance
+8-getter and setter
+9-property flag and descriptor
